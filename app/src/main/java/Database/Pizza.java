@@ -1,4 +1,4 @@
-package tp1.app.myapplication;
+package Database;
 
 
 import com.j256.ormlite.field.DatabaseField;
@@ -12,6 +12,9 @@ public class Pizza {
     @DatabaseField (columnName = "type_pizza")
     public String type;
 
-    @DatabaseField (columnName = "prix_pizza")
-    public float prix;
+    @DatabaseField (columnName = "adresse_de_livraison")
+    public String adresseLivraison;
+
+    @DatabaseField
+    public String telephone;
 }
