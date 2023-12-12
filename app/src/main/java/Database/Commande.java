@@ -14,6 +14,9 @@ public class Commande
     @DatabaseField(columnName = "numero_commande")
     public String numero;
 
+    @DatabaseField(columnName = "nom_client")
+    public String nom_client;
+
     @DatabaseField(columnName = "montant_paye_commande")
     public float montantPaye;
 

@@ -9,12 +9,13 @@ public class Pizza {
     @DatabaseField(columnName = "id_pizza", generatedId = true)
     public int id;
 
+    @DatabaseField(columnName = "sorte")
+    public String sorte;
+
     @DatabaseField (columnName = "type_pizza")
     public String type;
 
-    @DatabaseField (columnName = "adresse_de_livraison")
-    public String adresseLivraison;
+    @DatabaseField (columnName = "prix")
+    public double prix;
 
-    @DatabaseField
-    public String telephone;
 }

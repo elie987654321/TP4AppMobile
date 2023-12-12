@@ -9,6 +9,9 @@ public class Client
     @DatabaseField(columnName = "id_client", generatedId = true)
     public int id;
 
+    @DatabaseField(columnName = "nom")
+    public String nom;
+
     @DatabaseField(columnName = "adresse_couriel")
     public String adresseCourriel;
 
@@ -17,4 +20,10 @@ public class Client
 
     @DatabaseField(columnName = "adresse_de_livraison")
     public String adresseDeLivraison;
+
+    @DatabaseField(columnName = "telephone")
+    public String telephone;
+
+    @DatabaseField(columnName = "points")
+    public int points;
 }
