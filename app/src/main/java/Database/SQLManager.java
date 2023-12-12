@@ -44,11 +44,4 @@ public class SQLManager extends OrmLiteSqliteOpenHelper {
 
     }
 
-    public void CreateFakeDatabase()
-    {
-
-    }
-
-
-
 }

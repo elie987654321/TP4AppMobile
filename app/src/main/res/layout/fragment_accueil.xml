@@ -5,84 +5,104 @@
     android:layout_height="match_parent"
     tools:context=".FragmentInscription">
 
+    <Button
+        android:id="@+id/buttonConnexion"
+        android:layout_width="167dp"
+        android:layout_height="51dp"
+        android:text="CONNEXION"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
+
+    <Button
+        android:id="@+id/buttonInscription"
+        android:layout_width="167dp"
+        android:layout_height="51dp"
+        android:text="INSCRIPTION"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="278dp"
+        android:layout_height="117dp"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        tools:src="@drawable/papa_john" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="243dp"
+        android:layout_height="66dp"
+        android:text="Papa John's Pizza 3220 Saint-Martin, Laval, CA H7T 1A1 +1 450 688 7000"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <ImageView
+        android:id="@+id/pizza1"
+        android:layout_width="141dp"
+        android:layout_height="118dp"
+        android:src="@drawable/pizza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
+
+    <ImageView
+        android:id="@+id/pizza2"
+        android:layout_width="141dp"
+        android:layout_height="118dp"
+        android:src="@drawable/pizza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="139dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
-        android:text="La pizza ultime"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNom"
+        android:layout_width="141dp"
+        android:layout_height="21dp"
+        android:text="Pizza royale"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewNom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="12dp"
-        android:text="Papa john's pizza"
-        app:layout_constraintBottom_toTopOf="@+id/textViewInformations2"
-        app:layout_constraintEnd_toEndOf="@+id/textViewInformations2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewInformations2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"></TextView>
-
-    <TextView
-        android:id="@+id/textViewInformations2"
-        android:layout_width="206dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
-        android:text="321 Avenue st-trois-deux-un"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNom"></TextView>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="214dp"
-        android:layout_height="187dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInformations2" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="133dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="35dp"
-        android:text="La pizza ultime"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConnexion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/buttonConnexion"
-        android:layout_width="140dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="102dp"
-        android:text="Connexion"
+        android:id="@+id/textView3"
+        android:layout_width="141dp"
+        android:layout_height="21dp"
+        android:text="Pizza aux tomates"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonInscription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/buttonInscription"
-        android:layout_width="0dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="50dp"
-        android:onClick="ClickBoutonInscription"
-        android:text="Inscription"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonConnexion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonConnexion" />
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
