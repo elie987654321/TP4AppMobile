@@ -27,6 +27,15 @@ public class Client
     @DatabaseField(columnName = "points")
     public int points;
 
+    public Client(String nom, String adresseCourriel, String motDePasse, String adresseDeLivraison, String telephone, int points) {
+        this.nom = nom;
+        this.adresseCourriel = adresseCourriel;
+        this.motDePasse = motDePasse;
+        this.adresseDeLivraison = adresseDeLivraison;
+        this.telephone = telephone;
+        this.points = points;
+    }
+
     public String getNom() {
         return nom;
     }

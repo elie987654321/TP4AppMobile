@@ -11,13 +11,13 @@ import com.j256.ormlite.table.TableUtils;
 
 import java.util.List;
 
-public class SQLManager extends OrmLiteSqliteOpenHelper {
+public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     private final static String DATABASE_NAME = "BD_pizzeria";
 
     private final static int DATABASE_VERSION = 1;
 
-    public SQLManager(Context context, ConnectionSource connectionSource)
+    public DatabaseManager(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

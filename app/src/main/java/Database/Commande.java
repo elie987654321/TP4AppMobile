@@ -22,4 +22,6 @@ public class Commande
 
     @DatabaseField(columnName = "date_commande")
     public Date date;
+
+
 }

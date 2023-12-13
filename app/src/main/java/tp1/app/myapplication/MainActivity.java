@@ -18,11 +18,12 @@ import com.j256.ormlite.dao.Dao;
 
 import Database.Client;
 import Database.Pizza;
-import Database.SQLManager;
+import Database.DatabaseManager;
 
 public class MainActivity extends AppCompatActivity
 {
     DrawerLayout dLayout;
+    DatabaseManager databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,51 +40,22 @@ public class MainActivity extends AppCompatActivity
         });
         setNavigationDrawer(false);
 
-        SQLManager sqlManager = new SQLManager(this, null);
+        databaseManager = new DatabaseManager(this);
 
         // Add base users
-        Client client1 = new Client();
-        client1.nom = "charles";
-        client1.adresseCourriel = "charles@hotmail.ca";
-        client1.motDePasse = "1234";
-        client1.adresseDeLivraison = "123 rue Testeur";
-        client1.telephone = "123-456-7890";
-        client1.points = 0;
-
-        Client client2 = new Client();
-        client2.nom = "elie";
-        client2.adresseCourriel = "elie@hotmail.ca";
-        client2.motDePasse = "4321";
-        client2.adresseDeLivraison = "321 rue Testeur";
-        client2.telephone = "098-765-4321";
-        client2.points = 0;
-
-        try {
-            Dao<Client, Integer> clientDao = sqlManager.getDao(Client.class);
-            clientDao.createOrUpdate(client1);
-            clientDao.createOrUpdate(client2);
-        } catch (SQLException | java.sql.SQLException e) {
-            e.printStackTrace();
-        }
+        Client client1 = new Client("Charles","Charlis70@hotmail.ca","1234","123 rue test","123-456-7890",0);
+        Client client2 = new Client("Elie","Elie@hotmail.ca","4321","321 rue test","098-765-4321",0);
 
         // Add base pizzas
-        Pizza pizza1 = new Pizza();
-        pizza1.sorte = "Double Cheese";
-        pizza1.type = "petit";
-        pizza1.prix = 8.99;
+        Pizza pizza1 = new Pizza("Double Cheese","petit",8.99);
+        Pizza pizza2 = new Pizza("Pepperoni","moyen",10.99);
 
-        Pizza pizza2 = new Pizza();
-        pizza2.sorte = "Pepperoni";
-        pizza2.type = "moyen";
-        pizza2.prix = 10.99;
+        databaseManager.insertClient(client1);
+        databaseManager.insertClient(client2);
+        databaseManager.insertPizza(pizza1);
+        databaseManager.insertPizza(pizza2);
 
-        try {
-            Dao<Pizza, Integer> pizzaDao = sqlManager.getDao(Pizza.class);
-            pizzaDao.createOrUpdate(pizza1);
-            pizzaDao.createOrUpdate(pizza2);
-        } catch (SQLException | java.sql.SQLException e) {
-            e.printStackTrace();
-        }
+        databaseManager.close();
     }
 
     public void setNavigationDrawer(boolean isConnected) {
