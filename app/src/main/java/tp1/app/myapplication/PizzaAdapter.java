@@ -6,17 +6,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import Database.Pizza;
 
 public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaViewHolder> {
-
     private List<Pizza> pizzaList;
+    private MainActivity activity; // Reference to MainActivity
 
-    public PizzaAdapter(List<Pizza> pizzaList) {
+    public PizzaAdapter(List<Pizza> pizzaList, MainActivity activity) {
         this.pizzaList = pizzaList;
+        this.activity = activity; // Assign MainActivity reference
     }
 
     @NonNull
@@ -38,7 +41,10 @@ public class PizzaAdapter extends RecyclerView.Adapter<PizzaAdapter.PizzaViewHol
         holder.ajouterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                if (activity != null) {
+                    activity.getCommande().add(pizza);
+                    Toast.makeText(activity, "Pizza ajoutée", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

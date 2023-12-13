@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.j256.ormlite.dao.Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Database.Client;
@@ -25,6 +26,8 @@ import Database.DatabaseManager;
 
 public class MainActivity extends AppCompatActivity {
     Client connectedClient;
+
+    List<Pizza> commande = new ArrayList<>();
     DrawerLayout dLayout;
     DatabaseManager databaseManager;
 
@@ -46,20 +49,30 @@ public class MainActivity extends AppCompatActivity {
         });
         setNavigationDrawer(false);
 
-        // Add base users
-        Client client1 = new Client("Charles", "Charlis70@hotmail.ca", "1234", "123 rue test", "123-456-7890", 0);
-        Client client2 = new Client("Elie", "Elie@hotmail.ca", "4321", "321 rue test", "098-765-4321", 0);
+        if (databaseManager.isDatabaseEmpty()) {
+            // Perform insertion only if the database is empty
+            Client client1 = new Client("Charles", "Charlis70@hotmail.ca", "1234", "123 rue test", "123-456-7890", 0);
+            Client client2 = new Client("Elie", "Elie@hotmail.ca", "4321", "321 rue test", "098-765-4321", 0);
 
-        // Add base pizzas
-        Pizza pizza1 = new Pizza("Double Cheese", "petit", 8.99);
-        Pizza pizza2 = new Pizza("Pepperoni", "moyen", 10.99);
+            Pizza pizza1 = new Pizza("Double Cheese", "petit", 8.99);
+            Pizza pizza2 = new Pizza("Pepperoni", "moyen", 10.99);
 
-        databaseManager.insertClient(client1);
-        databaseManager.insertClient(client2);
-        databaseManager.insertPizza(pizza1);
-        databaseManager.insertPizza(pizza2);
+            databaseManager.insertClient(client1);
+            databaseManager.insertClient(client2);
+            databaseManager.insertPizza(pizza1);
+            databaseManager.insertPizza(pizza2);
+        }
+
 
         databaseManager.close();
+    }
+
+    public List<Pizza> getCommande() {
+        return commande;
+    }
+
+    public void setCommande(List<Pizza> commande) {
+        this.commande = commande;
     }
 
     public Client getConnectedClient() {
@@ -79,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (isConnected) {
             // Show all menu items
             accueilItem.setVisible(true);
+            menu.findItem(R.id.pizzas).setVisible(true);
             menu.findItem(R.id.profil).setVisible(true);
             menu.findItem(R.id.commandes).setVisible(true);
             menu.findItem(R.id.points).setVisible(true);

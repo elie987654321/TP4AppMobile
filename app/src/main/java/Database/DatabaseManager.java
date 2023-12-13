@@ -11,6 +11,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import com.j256.ormlite.table.TableUtils;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class DatabaseManager extends OrmLiteSqliteOpenHelper {
@@ -116,6 +117,23 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
         } catch( Exception exception ) {
             Log.e( "DATABASE", "Impossible de lire les clients la base de données", exception );
             return null;
+        }
+    }
+
+    public boolean isDatabaseEmpty() {
+        try {
+            Dao<Client, Integer> clientDao = getDao(Client.class);
+            Dao<Pizza, Integer> pizzaDao = getDao(Pizza.class);
+
+            long clientCount = clientDao.countOf();
+            long pizzaCount = pizzaDao.countOf();
+
+            // You can adjust this condition as per your requirement
+            // Check if both Client and Pizza tables are empty
+            return (clientCount == 0 && pizzaCount == 0);
+        } catch (SQLException e) {
+            Log.e("DATABASE", "Error checking database records", e);
+            return true; // Return true as a fail-safe option or handle the error accordingly
         }
     }
 

@@ -34,7 +34,7 @@ public class FragmentPizzas extends Fragment {
         pizzaList = getPizzaList(); // Fetch the list of pizzas
 
         // Create and set the adapter
-        pizzaAdapter = new PizzaAdapter(pizzaList);
+        pizzaAdapter = new PizzaAdapter(pizzaList, (MainActivity) getActivity());
         recyclerView.setAdapter(pizzaAdapter);
 
         // Set layout manager
