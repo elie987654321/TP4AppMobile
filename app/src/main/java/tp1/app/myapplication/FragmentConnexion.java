@@ -23,6 +23,7 @@ public class FragmentConnexion extends Fragment {
     private EditText editEmail;
     private EditText editPassword;
     private Button buttonAuthentification;
+    private Button buttonCreerCompte;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class FragmentConnexion extends Fragment {
         editEmail = view.findViewById(R.id.editEmail);
         editPassword = view.findViewById(R.id.editMotDePasse);
         buttonAuthentification = view.findViewById(R.id.buttonAuthentification);
+        buttonCreerCompte = view.findViewById(R.id.buttonCreerCompte);
 
         buttonAuthentification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,15 @@ public class FragmentConnexion extends Fragment {
                 if (!clientExiste) {
                     Toast.makeText(getActivity(), "Email et/ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        buttonCreerCompte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame, new FragmentInscription());
+                fragmentTransaction.commit();
             }
         });
 
