@@ -26,4 +26,52 @@ public class Client
 
     @DatabaseField(columnName = "points")
     public int points;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getAdresseCourriel() {
+        return adresseCourriel;
+    }
+
+    public void setAdresseCourriel(String adresseCourriel) {
+        this.adresseCourriel = adresseCourriel;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public String getAdresseDeLivraison() {
+        return adresseDeLivraison;
+    }
+
+    public void setAdresseDeLivraison(String adresseDeLivraison) {
+        this.adresseDeLivraison = adresseDeLivraison;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
 }

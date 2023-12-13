@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
                 dLayout.openDrawer(Gravity.LEFT);
             }
         });
-        setNavigationDrawer();
+        setNavigationDrawer(false);
 
         SQLManager sqlManager = new SQLManager(this, null);
 
@@ -85,9 +86,29 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void setNavigationDrawer() {
-        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navView = (NavigationView) findViewById(R.id.navigation);
+    public void setNavigationDrawer(boolean isConnected) {
+        dLayout = findViewById(R.id.drawer_layout);
+        NavigationView navView = findViewById(R.id.navigation);
+        Menu menu = navView.getMenu();
+
+        // Assuming R.id.accueil is the item ID for the "Accueil" menu item
+        MenuItem accueilItem = menu.findItem(R.id.accueil);
+
+        if (isConnected) {
+            // Show all menu items
+            accueilItem.setVisible(true);
+            menu.findItem(R.id.profil).setVisible(true);
+            menu.findItem(R.id.commandes).setVisible(true);
+            menu.findItem(R.id.points).setVisible(true);
+        } else {
+            // Only show the "Accueil" menu item
+            accueilItem.setVisible(true);
+            // Hide other menu items
+            menu.findItem(R.id.pizzas).setVisible(false);
+            menu.findItem(R.id.profil).setVisible(false);
+            menu.findItem(R.id.commandes).setVisible(false);
+            menu.findItem(R.id.points).setVisible(false);
+        }
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
