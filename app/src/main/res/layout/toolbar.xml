@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="70dp"
     android:background="@color/design_default_color_primary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    app:logo="@drawable/papajohn"
-    app:navigationIcon="@drawable/menu_icon"
-    app:titleTextColor="#FFF"></androidx.appcompat.widget.Toolbar>
+    app:titleTextColor="#FFF"
+    app:logo="@drawable/papajohn">
+</androidx.appcompat.widget.Toolbar>
