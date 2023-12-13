@@ -58,7 +58,7 @@ public class FragmentConnexion extends Fragment {
                             clientExiste = true;
 
                             FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                            fragmentTransaction.replace(R.id.frame, new FragmentCommandes());
+                            fragmentTransaction.replace(R.id.frame, new FragmentPizzas());
                             fragmentTransaction.commit();
                             break;
                         }

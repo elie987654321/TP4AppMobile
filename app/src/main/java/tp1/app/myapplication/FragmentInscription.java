@@ -58,7 +58,7 @@ public class FragmentInscription extends Fragment {
                         mainActivity.setConnectedClient(newClient);
                     }
                     FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frame, new FragmentCommandes());
+                    fragmentTransaction.replace(R.id.frame, new FragmentPizzas());
                     fragmentTransaction.commit();
                 } else {
                     Toast.makeText(getActivity(), "Veuillez remplir tout les champs", Toast.LENGTH_SHORT).show();
