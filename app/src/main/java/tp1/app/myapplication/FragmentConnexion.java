@@ -3,6 +3,7 @@ package tp1.app.myapplication;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
+import Database.Client;
 import Database.DatabaseManager;
 
 public class FragmentConnexion extends Fragment {
@@ -21,8 +25,7 @@ public class FragmentConnexion extends Fragment {
     private Button buttonAuthentification;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         databaseManager = new DatabaseManager(FragmentConnexion.super.getContext());
 
         View view = inflater.inflate(R.layout.fragment_connexion, container, false);
@@ -36,8 +39,33 @@ public class FragmentConnexion extends Fragment {
             public void onClick(View v) {
                 String email = editEmail.getText().toString().trim();
                 String password = editPassword.getText().toString().trim();
+                boolean clientExiste = false;
 
-                Toast.makeText(getActivity(), email + " " + password, Toast.LENGTH_SHORT).show();
+                databaseManager = new DatabaseManager(getContext());
+                List<Client> clients = databaseManager.readClients();
+                databaseManager.close();
+
+                if (clients != null && !clients.isEmpty()) {
+                    for (Client client : clients) {
+                        if (client.motDePasse.equals(password) && client.adresseCourriel.equals(email)) {
+                            MainActivity mainActivity = (MainActivity) getActivity();
+                            if (mainActivity != null) {
+                                mainActivity.setNavigationDrawer(true);
+                                mainActivity.setConnectedClient(client);
+                            }
+                            clientExiste = true;
+
+                            FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.frame, new FragmentCommandes());
+                            fragmentTransaction.commit();
+                            break;
+                        }
+                    }
+                }
+
+                if (!clientExiste) {
+                    Toast.makeText(getActivity(), "Email et/ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

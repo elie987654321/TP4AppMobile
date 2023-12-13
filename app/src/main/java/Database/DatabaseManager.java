@@ -7,6 +7,8 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
+
+
 import com.j256.ormlite.table.TableUtils;
 
 import java.util.List;
@@ -53,7 +55,6 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     public void insertClient( Client client ) {
         try {
-            //Dao<T, ?> dao = DaoManager.createDao(getConnectionSource(), clazz);
             Dao<Client, Integer> dao = getDao( Client.class );
             dao.create( client );
             Log.i( "DATABASE", "Insertion client" );
@@ -76,7 +77,6 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     public void insertCommande( Commande commande ) {
         try {
-            //Dao<T, ?> dao = DaoManager.createDao(getConnectionSource(), clazz);
             Dao<Commande, Integer> dao = getDao( Commande.class );
             dao.create( commande );
             Log.i( "DATABASE", "Insertion commande" );
@@ -99,7 +99,6 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
 
     public void insertPizza( Pizza pizza ) {
         try {
-            //Dao<T, ?> dao = DaoManager.createDao(getConnectionSource(), clazz);
             Dao<Pizza, Integer> dao = getDao( Pizza.class );
             dao.create( pizza );
             Log.i( "DATABASE", "Insertion pizza" );

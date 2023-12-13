@@ -13,15 +13,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
 import com.j256.ormlite.dao.Dao;
+
+import java.util.List;
 
 import Database.Client;
 import Database.Pizza;
 import Database.DatabaseManager;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
+    Client connectedClient;
     DrawerLayout dLayout;
     DatabaseManager databaseManager;
 
@@ -29,6 +32,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        databaseManager = new DatabaseManager(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,15 +46,13 @@ public class MainActivity extends AppCompatActivity
         });
         setNavigationDrawer(false);
 
-        databaseManager = new DatabaseManager(this);
-
         // Add base users
-        Client client1 = new Client("Charles","Charlis70@hotmail.ca","1234","123 rue test","123-456-7890",0);
-        Client client2 = new Client("Elie","Elie@hotmail.ca","4321","321 rue test","098-765-4321",0);
+        Client client1 = new Client("Charles", "Charlis70@hotmail.ca", "1234", "123 rue test", "123-456-7890", 0);
+        Client client2 = new Client("Elie", "Elie@hotmail.ca", "4321", "321 rue test", "098-765-4321", 0);
 
         // Add base pizzas
-        Pizza pizza1 = new Pizza("Double Cheese","petit",8.99);
-        Pizza pizza2 = new Pizza("Pepperoni","moyen",10.99);
+        Pizza pizza1 = new Pizza("Double Cheese", "petit", 8.99);
+        Pizza pizza2 = new Pizza("Pepperoni", "moyen", 10.99);
 
         databaseManager.insertClient(client1);
         databaseManager.insertClient(client2);
@@ -58,12 +62,18 @@ public class MainActivity extends AppCompatActivity
         databaseManager.close();
     }
 
+    public Client getConnectedClient() {
+        return connectedClient;
+    }
+
+    public void setConnectedClient(Client connectedClient) {
+        this.connectedClient = connectedClient;
+    }
+
     public void setNavigationDrawer(boolean isConnected) {
         dLayout = findViewById(R.id.drawer_layout);
         NavigationView navView = findViewById(R.id.navigation);
         Menu menu = navView.getMenu();
-
-        // Assuming R.id.accueil is the item ID for the "Accueil" menu item
         MenuItem accueilItem = menu.findItem(R.id.accueil);
 
         if (isConnected) {
@@ -99,7 +109,6 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-
                 Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                 if (frag != null) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -111,5 +120,7 @@ public class MainActivity extends AppCompatActivity
                 return false;
             }
         });
+
+
     }
 }

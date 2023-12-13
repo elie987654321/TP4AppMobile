@@ -3,10 +3,10 @@ package Database;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable
+@DatabaseTable(tableName = "T_Clients")
 public class Client
 {
-    @DatabaseField(columnName = "id_client", generatedId = true)
+    @DatabaseField(columnName = "idClient", generatedId = true)
     public int id;
 
     @DatabaseField(columnName = "nom")
@@ -27,6 +27,9 @@ public class Client
     @DatabaseField(columnName = "points")
     public int points;
 
+    public Client(){
+    }
+
     public Client(String nom, String adresseCourriel, String motDePasse, String adresseDeLivraison, String telephone, int points) {
         this.nom = nom;
         this.adresseCourriel = adresseCourriel;
@@ -34,6 +37,14 @@ public class Client
         this.adresseDeLivraison = adresseDeLivraison;
         this.telephone = telephone;
         this.points = points;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -82,5 +93,12 @@ public class Client
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "nom='" + nom + '\'' +
+                '}';
     }
 }

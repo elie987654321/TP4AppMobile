@@ -3,7 +3,7 @@ package Database;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable
+@DatabaseTable( tableName = "T_Pizzas")
 public class Pizza {
     @DatabaseField(columnName = "id_pizza", generatedId = true)
     public int id;
@@ -17,10 +17,21 @@ public class Pizza {
     @DatabaseField (columnName = "prix")
     public double prix;
 
+    public Pizza(){
+    }
+
     public Pizza(String sorte, String type, double prix) {
         this.sorte = sorte;
         this.type = type;
         this.prix = prix;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSorte() {
@@ -45,5 +56,14 @@ public class Pizza {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "sorte='" + sorte + '\'' +
+                ", type='" + type + '\'' +
+                ", prix=" + prix +
+                '}';
     }
 }
