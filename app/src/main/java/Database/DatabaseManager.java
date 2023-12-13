@@ -119,4 +119,6 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
         }
     }
 
+    //TODO creer la methode modifyClient pour pouvoir changer les infos du client connecter
+
 }

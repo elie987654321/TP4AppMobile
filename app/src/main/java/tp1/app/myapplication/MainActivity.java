@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.profil).setVisible(true);
             menu.findItem(R.id.commandes).setVisible(true);
             menu.findItem(R.id.points).setVisible(true);
+            //TODO ajouter le petit icone cliquable d'utilisateur qui redirige vers le fragment modifier utilisateur (Tu dois aussi creer le fragment, il n'existe pas encore)
+            //TODO nous somme dans un if car on veut seulement cet icone quand on est connecter, tu peus le pre-faire dans le layout et lui pre assigner le on-Click dans le
+            //TODO on-create de cette activiter mais set sa visibilite a true seulement quand l"utilisateur est connecter
         } else {
             // Only show the "Accueil" menu item
             accueilItem.setVisible(true);
