@@ -137,6 +137,14 @@ public class DatabaseManager extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    //TODO creer la methode modifyClient pour pouvoir changer les infos du client connecter
+    public void modifyClient(Client client) {
+        try {
+            Dao<Client, Integer> dao = getDao(Client.class);
+            dao.update(client);
+            Log.i("DATABASE", "Modification du client");
+        } catch (Exception exception) {
+            Log.e("DATABASE", "Impossible de modifier le client dans la base de données", exception);
+        }
+    }
 
 }

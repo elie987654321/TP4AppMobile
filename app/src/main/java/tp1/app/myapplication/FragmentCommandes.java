@@ -50,7 +50,7 @@ public class FragmentCommandes extends Fragment {
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {
             pizzaList = mainActivity.getCommande();
-            pizzaAdapter = new PizzaCommandeAdapter(pizzaList);
+            pizzaAdapter = new PizzaCommandeAdapter(pizzaList, mainActivity);
             recyclerView.setAdapter(pizzaAdapter);
             points = mainActivity.getConnectedClient().points;
         }
